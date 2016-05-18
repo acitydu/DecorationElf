@@ -1,0 +1,14 @@
+.mui-input-row label~input{
+	padding-left:8px;
+}
+.mui-input-row label~select{
+	float: right;
+    width: 65%!important;
+    margin-bottom: 0;
+}
+.mui-input-row .mui-numbox{
+	float:left;
+}
+.mui-numbox{
+	width:200px;
+}
