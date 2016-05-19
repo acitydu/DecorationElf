@@ -1,0 +1,23 @@
+{
+	"index.html": {
+		"resources": [
+			"css/app.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"js/mui.js",
+			"numbox.html",
+			"js/vue.min.js"
+		],
+		"refer": [
+			"numbox.html"
+		]
+	},
+	"numbox.html": {
+		"resources": [
+			"index.html"
+		],
+		"refer": [
+			"index.html"
+		]
+	}
+}

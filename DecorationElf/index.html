@@ -14,34 +14,33 @@
 <link rel="stylesheet" type="text/css" href="css/app.css"/>
 
 </head>
+
 <body>
 <header class="mui-bar mui-bar-nav">
 	<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 	<h1 class="mui-title">折叠面板</h1>
 </header>
-<div class="mui-content">
+<div class="mui-content" id="muicontent">
 	<div class="mui-card">
-		<ul class="mui-table-view" id="maindiv">
+		<ul class="mui-table-view">
 			<li class="mui-table-view-cell mui-collapse">
-				<a class="mui-navigate-right" href="#">墙顶面老粉铲除</a>
+				<a class="mui-navigate-right" href="#">{{ project[0].pojName }}<span></span></a>
 				<div class="mui-collapse-content">
 					<form class="mui-input-group">
 						<div class="mui-input-row">
-							<label>材料与规格</label>
-							<select class="mui-btn mui-btn-block">
-								<option value="item-1">item-1</option>
-								<option value="item-2">item-2</option>
-								<option value="item-3">item-3</option>
-								<option value="item-4">item-4</option>
-								<option value="item-5">item-5</option>
+							<label>材料品牌与规格</label>
+							<select class="mui-btn mui-btn-block" v-model="project[0].userMr">
+								<option v-bind:value="project[0].Mr[0]">{{ project[0].Mr[0].mrName}}</option>
+								<option v-bind:value="project[0].Mr[1]">{{ project[0].Mr[1].mrName}}</option>
 							</select>
+							
 						</div>
 		
 						<div class="mui-input-row">
 							<label>数量</label>
 							<div class="mui-numbox" data-numbox-min='0'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number" v-model="mainnum" value="{{ mainnum }}"/>
+								<input class="mui-input-numbox" type="number" v-model="project[0].userMr.mrNum"/>
 								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 							</div>
 						</div>
@@ -55,75 +54,335 @@
 							<label>材料单价</label>
 							<div class="mui-numbox" data-numbox-min='0'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" v-model="mrprice" type="number" />
+								<input class="mui-input-numbox" v-model="project[0].userMr.mrPrice" type="number" />
 								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 							</div>
 						</div>
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="材料总计:{{ mrprice * mainnum }}">
+							<input type="text" class="mui-input-clear" value="材料总计:{{ project[0].userMr.mrPrice * project[0].userMr.mrNum }}">
 						</div>
 
 						<div class="mui-input-row">
 							<label>损耗</label>
 							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
 								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number" step="0.01" value="{{ loss }}" />
+								<input class="mui-input-numbox" type="number"  v-model="project[0].userMr.loss"/>
 								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
 							</div>
 						</div>
 
 						<div class="mui-input-row">
-							<label>Input</label>
-							<select class="mui-btn mui-btn-block">
-								<option value="item-1">item-1</option>
-								<option value="item-2">item-2</option>
-								<option value="item-3">item-3</option>
-								<option value="item-4">item-4</option>
-								<option value="item-5">item-5</option>
-							</select>
+							<label>人工单价</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" v-model="project[0].userMr.pePrice" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
 						</div>
 
-						<div class="mui-button-row">
-							<button class="mui-btn mui-btn-primary" type="button" onclick="return false;">确认</button>&nbsp;&nbsp;
-							<button class="mui-btn mui-btn-primary" type="button" onclick="return false;">取消</button>
+						<div class="mui-input-row">
+							<label></label>
+							<input type="text" class="mui-input-clear" value="人工总计:{{ project[0].userMr.pePrice * project[0].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row mui-input-row-minheight">
+							<label>主要工艺说明</label>
+							<textarea class="mui-input-clear">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
+						</div>
+
+						<div class="mui-input-row">
+							<label>小计</label>
+							<input type="text" class="mui-input-clear" value="{{ ( project[0].userMr.mrPrice * project[0].userMr.mrNum + project[0].userMr.pePrice * project[0].userMr.mrNum ) * project[0].userMr.loss }}">
+						</div>
+					</form>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell mui-collapse">
+				<a class="mui-navigate-right" href="#">{{ project[1].pojName }}<span></span></a>
+				<div class="mui-collapse-content">
+					<form class="mui-input-group">
+						<div class="mui-input-row">
+							<label>材料品牌与规格</label>
+							<select class="mui-btn mui-btn-block" v-model="project[1].userMr">
+								<option v-bind:value="project[0].Mr[0]">{{ project[1].Mr[0].mrName}}</option>
+								<option v-bind:value="project[0].Mr[1]">{{ project[1].Mr[1].mrName}}</option>
+							</select>
+							
+						</div>
+		
+						<div class="mui-input-row">
+							<label>数量</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number" v-model="project[1].userMr.mrNum"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label>单位</label>
+							<input type="text" class="mui-input-clear" value="平方米" disabled="disabled">
+						</div>
+
+						<div class="mui-input-row">
+							<label>材料单价</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" v-model="project[1].userMr.mrPrice" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label></label>
+							<input type="text" class="mui-input-clear" value="材料总计:{{ project[1].userMr.mrPrice * project[1].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row">
+							<label>损耗</label>
+							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number"  v-model="project[1].userMr.loss"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label>人工单价</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" v-model="project[1].userMr.pePrice" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label></label>
+							<input type="text" class="mui-input-clear" value="人工总计:{{ project[1].userMr.pePrice * project[1].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row mui-input-row-minheight">
+							<label>主要工艺说明</label>
+							<textarea class="mui-input-clear">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
+						</div>
+
+						<div class="mui-input-row">
+							<label>小计</label>
+							<input type="text" class="mui-input-clear" value="{{ ( project[1].userMr.mrPrice * project[1].userMr.mrNum + project[1].userMr.pePrice * project[1].userMr.mrNum ) * project[1].userMr.loss }}">
+						</div>
+					</form>
+				</div>
+			</li>
+
+			<li class="mui-table-view-cell mui-collapse">
+				<a class="mui-navigate-right" href="#">{{ project[2].pojName }}<span></span></a>
+				<div class="mui-collapse-content">
+					<form class="mui-input-group">
+						<div class="mui-input-row">
+							<label>材料品牌与规格</label>
+							<select class="mui-btn mui-btn-block" v-model="project[2].userMr">
+								<option v-bind:value="project[0].Mr[0]">{{ project[2].Mr[0].mrName}}</option>
+								<option v-bind:value="project[0].Mr[1]">{{ project[2].Mr[1].mrName}}</option>
+							</select>
+							
+						</div>
+		
+						<div class="mui-input-row">
+							<label>数量</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number" v-model="project[2].userMr.mrNum"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label>单位</label>
+							<input type="text" class="mui-input-clear" value="平方米" disabled="disabled">
+						</div>
+
+						<div class="mui-input-row">
+							<label>材料单价</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" v-model="project[2].userMr.mrPrice" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label></label>
+							<input type="text" class="mui-input-clear" value="材料总计:{{ project[2].userMr.mrPrice * project[2].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row">
+							<label>损耗</label>
+							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number"  v-model="project[2].userMr.loss"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label>人工单价</label>
+							<div class="mui-numbox" data-numbox-min='0'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" v-model="project[2].userMr.pePrice" type="number" />
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
+						</div>
+
+						<div class="mui-input-row">
+							<label></label>
+							<input type="text" class="mui-input-clear" value="人工总计:{{ project[2].userMr.pePrice * project[2].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row mui-input-row-minheight">
+							<label>主要工艺说明</label>
+							<textarea class="mui-input-clear">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
+						</div>
+
+						<div class="mui-input-row">
+							<label>小计</label>
+							<input type="text" class="mui-input-clear" value="{{ ( project[2].userMr.mrPrice * project[2].userMr.mrNum + project[2].userMr.pePrice * project[2].userMr.mrNum ) * project[2].userMr.loss }}">
 						</div>
 					</form>
 				</div>
 			</li>
 			
-			<li class="mui-table-view-cell mui-collapse">
-				<a class="mui-navigate-right" href="#">文字排版</a>
-				<div class="mui-collapse-content">
-					<h1>h1. Heading</h1>
-					<h2>h2. Heading</h2>
-					<h3>h3. Heading</h3>
-					<h4>h4. Heading</h4>
-					<h5>h5. Heading</h5>
-					<h6>h6. Heading</h6>
-					<p>
-						p. 目前最接近原生App效果的框架。
-					</p>
-				</div>
-			</li>
 		</ul>
 	</div>
-</div>
-<script src="js/mui.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/vue/1.0.24/vue.min.js"></script>
-<script>
-mui.init({
-	swipeBack:true //启用右滑关闭功能
-});
+	
+	<div style="margin:15px;">总计：{{ ( project[0].userMr.mrPrice * project[0].userMr.mrNum + project[0].userMr.pePrice * project[0].userMr.mrNum ) * project[0].userMr.loss + ( project[1].userMr.mrPrice * project[1].userMr.mrNum + project[1].userMr.pePrice * project[1].userMr.mrNum ) * project[1].userMr.loss + ( project[2].userMr.mrPrice * project[2].userMr.mrNum + project[2].userMr.pePrice * project[2].userMr.mrNum ) * project[2].userMr.loss }}</div>
 
-new Vue({
-  el: '#maindiv',
-  data: {
-    mainnum: 98,
-    mrprice: 1,
-    loss: 1.05
-  }
+	<a href="numbox.html">数字输入</a>
+</div>
+
+<script src="js/mui.js"></script>
+<script src="js/vue.min.js"></script>
+
+<script>
+mui.plusReady(function(){
+	
+
+
+	
+
+});
+var userlist = new Vue({
+	el: '#muicontent',
+	data: {
+		project :[
+		  	{
+		  		pojName: "墙顶面老粉铲除",
+		  		selMr: "0",
+		  		Mr: [
+					{
+						mrId: 1,
+			  			mrName: "人工",
+					    mrNum: 98,
+					    mrPrice: 1,
+					    loss: 1.05,
+					    pePrice: 2
+			  		},
+			  		{
+			  			mrId: 2,
+			  			mrName: "人工2",
+					    mrNum: 198,
+					    mrPrice: 11,
+					    loss: 11.05,
+					    pePrice: 12
+			  		}
+		  		],
+		  		userMr:{
+		  			mrId: 1,
+		  			mrName: "人工",
+				    mrNum: 98,
+				    mrPrice: 1,
+				    loss: 1.05,
+				    pePrice: 2
+		  		},
+		  		pojprice:308.7
+		  	},
+		  	{
+		  		pojName: "墙顶面基层处理",
+		  		selMr: "0",
+		  		Mr: [
+		  			{
+		  				mrId: 3,
+			  			mrName: "老粉，腻子，中南胶水",
+					    mrNum: 98,
+					    mrPrice: 8,
+					    loss: 1.05,
+					    pePrice: 12
+			  		}
+		  		],
+		  		userMr:{
+		  			mrId: 3,
+		  			mrName: "老粉，腻子，中南胶水",
+				    mrNum: 98,
+				    mrPrice: 8,
+				    loss: 1.05,
+				    pePrice: 12
+		  		},
+		  		pojprice:2058
+		  	},
+		  	{
+		  		pojName: "顶面刷乳胶漆",
+		  		selMr: "0",
+		  		Mr: [
+					{
+						mrId: 4,
+			  			mrName: "立邦美得丽",
+					    mrNum: 98,
+					    mrPrice: 10,
+					    loss: 1.05,
+					    pePrice: 12
+			  		},
+			  		{
+			  			mrId: 5,
+			  			mrName: "立邦更美",
+					    mrNum: 150,
+					    mrPrice: 10,
+					    loss: 1.05,
+					    pePrice: 12
+			  		}
+		  		],
+		  		userMr:{
+		  			mrId: 4,
+		  			mrName: "立邦美得丽",
+				    mrNum: 98,
+				    mrPrice: 10,
+				    loss: 1.05,
+				    pePrice: 12
+		  		},
+		  		pojprice:2263.8
+		  	}
+		]
+	},
+	/*computed: {
+	    fullName: {
+		    // getter
+		    get: function () {
+		        
+		    },
+		    // setter
+		    set: function (newValue) {
+		        var names = newValue.split(' ')
+		        this.firstName = names[0]
+		        this.lastName = names[names.length - 1]
+		    }
+		}
+	},
+	method:{
+		iptChange: function(event){
+
+		}
+	}*/
 })
 </script>
 </body>

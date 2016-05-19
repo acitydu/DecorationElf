@@ -10,5 +10,9 @@
 	float:left;
 }
 .mui-numbox{
-	width:200px;
+	width:130px;
+}
+.mui-input-row.mui-input-row-minheight{
+	height: auto;
+	min-height:40px;
 }

@@ -189,5 +189,34 @@
 				}
 			}
 		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"css/app.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"js/mui.js",
+					"numbox.html",
+					"js/vue.min.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"numbox.html": {
+				"resources": [
+					"index.html"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"js/mui.min.js",
+				"css/mui.css"
+			]
+		}
 	}
 }
