@@ -1,3 +1,4 @@
+.mui-card{margin:7px;}
 .mui-input-row label~input{
 	padding-left:8px;
 }
@@ -16,3 +17,13 @@
 	height: auto;
 	min-height:40px;
 }
+
+.mui-table-view-cell>a:not(.mui-btn){
+	background: #ededed;
+}
+.mui-table-view-cell.mui-active>a:not(.mui-btn){
+	background: #999;
+	color:#fff;
+}
+
+.totalmoney{margin:7px;}

@@ -24,7 +24,7 @@
 	<div class="mui-card">
 		<ul class="mui-table-view">
 			<li class="mui-table-view-cell mui-collapse">
-				<a class="mui-navigate-right" href="#">{{ project[0].pojName }}<span></span></a>
+				<a class="mui-navigate-right">{{ project[0].pojName }}<span></span></a>
 				<div class="mui-collapse-content">
 					<form class="mui-input-group">
 						<div class="mui-input-row">
@@ -61,16 +61,7 @@
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="材料总计:{{ project[0].userMr.mrPrice * project[0].userMr.mrNum }}">
-						</div>
-
-						<div class="mui-input-row">
-							<label>损耗</label>
-							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
-								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number"  v-model="project[0].userMr.loss"/>
-								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-							</div>
+							<input type="text" disabled="disabled" class="mui-input-clear" value="材料总计:{{ project[0].userMr.mrPrice * project[0].userMr.mrNum }}">
 						</div>
 
 						<div class="mui-input-row">
@@ -84,31 +75,39 @@
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="人工总计:{{ project[0].userMr.pePrice * project[0].userMr.mrNum }}">
+							<input type="text" disabled="disabled" class="mui-input-clear" value="人工总计:{{ project[0].userMr.pePrice * project[0].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row">
+							<label>损耗</label>
+							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number"  v-model="project[0].userMr.loss"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
 						</div>
 
 						<div class="mui-input-row mui-input-row-minheight">
 							<label>主要工艺说明</label>
-							<textarea class="mui-input-clear">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
+							<textarea class="mui-input-clear" disabled="disabled">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
 						</div>
 
 						<div class="mui-input-row">
 							<label>小计</label>
-							<input type="text" class="mui-input-clear" value="{{ ( project[0].userMr.mrPrice * project[0].userMr.mrNum + project[0].userMr.pePrice * project[0].userMr.mrNum ) * project[0].userMr.loss }}">
+							<input type="text" disabled="disabled" class="mui-input-clear" value="{{ (( project[0].userMr.mrPrice * project[0].userMr.mrNum + project[0].userMr.pePrice * project[0].userMr.mrNum ) * project[0].userMr.loss).toFixed(2) }}">
 						</div>
 					</form>
 				</div>
 			</li>
 
 			<li class="mui-table-view-cell mui-collapse">
-				<a class="mui-navigate-right" href="#">{{ project[1].pojName }}<span></span></a>
+				<a class="mui-navigate-right">{{ project[1].pojName }}<span></span></a>
 				<div class="mui-collapse-content">
 					<form class="mui-input-group">
 						<div class="mui-input-row">
 							<label>材料品牌与规格</label>
 							<select class="mui-btn mui-btn-block" v-model="project[1].userMr">
-								<option v-bind:value="project[0].Mr[0]">{{ project[1].Mr[0].mrName}}</option>
-								<option v-bind:value="project[0].Mr[1]">{{ project[1].Mr[1].mrName}}</option>
+								<option v-bind:value="project[1].Mr[0]">{{ project[1].Mr[0].mrName}}</option>
 							</select>
 							
 						</div>
@@ -138,16 +137,7 @@
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="材料总计:{{ project[1].userMr.mrPrice * project[1].userMr.mrNum }}">
-						</div>
-
-						<div class="mui-input-row">
-							<label>损耗</label>
-							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
-								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number"  v-model="project[1].userMr.loss"/>
-								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-							</div>
+							<input type="text" disabled="disabled" class="mui-input-clear" value="材料总计:{{ project[1].userMr.mrPrice * project[1].userMr.mrNum }}">
 						</div>
 
 						<div class="mui-input-row">
@@ -161,31 +151,40 @@
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="人工总计:{{ project[1].userMr.pePrice * project[1].userMr.mrNum }}">
+							<input type="text" disabled="disabled" class="mui-input-clear" value="人工总计:{{ project[1].userMr.pePrice * project[1].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row">
+							<label>损耗</label>
+							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number"  v-model="project[1].userMr.loss"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
 						</div>
 
 						<div class="mui-input-row mui-input-row-minheight">
 							<label>主要工艺说明</label>
-							<textarea class="mui-input-clear">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
+							<textarea class="mui-input-clear" disabled="disabled">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
 						</div>
 
 						<div class="mui-input-row">
 							<label>小计</label>
-							<input type="text" class="mui-input-clear" value="{{ ( project[1].userMr.mrPrice * project[1].userMr.mrNum + project[1].userMr.pePrice * project[1].userMr.mrNum ) * project[1].userMr.loss }}">
+							<input type="text" disabled="disabled" class="mui-input-clear" value="{{ (( project[1].userMr.mrPrice * project[1].userMr.mrNum + project[1].userMr.pePrice * project[1].userMr.mrNum ) * project[1].userMr.loss).toFixed(2) }}">
 						</div>
 					</form>
 				</div>
 			</li>
 
 			<li class="mui-table-view-cell mui-collapse">
-				<a class="mui-navigate-right" href="#">{{ project[2].pojName }}<span></span></a>
+				<a class="mui-navigate-right">{{ project[2].pojName }}<span></span></a>
 				<div class="mui-collapse-content">
 					<form class="mui-input-group">
 						<div class="mui-input-row">
 							<label>材料品牌与规格</label>
 							<select class="mui-btn mui-btn-block" v-model="project[2].userMr">
-								<option v-bind:value="project[0].Mr[0]">{{ project[2].Mr[0].mrName}}</option>
-								<option v-bind:value="project[0].Mr[1]">{{ project[2].Mr[1].mrName}}</option>
+								<option v-bind:value="project[2].Mr[0]">{{ project[2].Mr[0].mrName}}</option>
+								<option v-bind:value="project[2].Mr[1]">{{ project[2].Mr[1].mrName}}</option>
 							</select>
 							
 						</div>
@@ -215,16 +214,7 @@
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="材料总计:{{ project[2].userMr.mrPrice * project[2].userMr.mrNum }}">
-						</div>
-
-						<div class="mui-input-row">
-							<label>损耗</label>
-							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
-								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
-								<input class="mui-input-numbox" type="number"  v-model="project[2].userMr.loss"/>
-								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
-							</div>
+							<input type="text" disabled="disabled" class="mui-input-clear" value="材料总计:{{ project[2].userMr.mrPrice * project[2].userMr.mrNum }}">
 						</div>
 
 						<div class="mui-input-row">
@@ -238,17 +228,26 @@
 
 						<div class="mui-input-row">
 							<label></label>
-							<input type="text" class="mui-input-clear" value="人工总计:{{ project[2].userMr.pePrice * project[2].userMr.mrNum }}">
+							<input type="text" disabled="disabled" class="mui-input-clear" value="人工总计:{{ project[2].userMr.pePrice * project[2].userMr.mrNum }}">
+						</div>
+
+						<div class="mui-input-row">
+							<label>损耗</label>
+							<div class="mui-numbox" data-numbox-min='1' data-numbox-step='0.01'>
+								<button class="mui-btn mui-btn-numbox-minus" type="button">-</button>
+								<input class="mui-input-numbox" type="number"  v-model="project[2].userMr.loss"/>
+								<button class="mui-btn mui-btn-numbox-plus" type="button">+</button>
+							</div>
 						</div>
 
 						<div class="mui-input-row mui-input-row-minheight">
 							<label>主要工艺说明</label>
-							<textarea class="mui-input-clear">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
+							<textarea class="mui-input-clear" disabled="disabled">浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发浮点数方式的分方式浮点数发达省份但是发</textarea>
 						</div>
 
 						<div class="mui-input-row">
 							<label>小计</label>
-							<input type="text" class="mui-input-clear" value="{{ ( project[2].userMr.mrPrice * project[2].userMr.mrNum + project[2].userMr.pePrice * project[2].userMr.mrNum ) * project[2].userMr.loss }}">
+							<input disabled="disabled" type="text" class="mui-input-clear" value="{{ (( project[2].userMr.mrPrice * project[2].userMr.mrNum + project[2].userMr.pePrice * project[2].userMr.mrNum ) * project[2].userMr.loss).toFixed }}">
 						</div>
 					</form>
 				</div>
@@ -257,9 +256,9 @@
 		</ul>
 	</div>
 	
-	<div style="margin:15px;">总计：{{ ( project[0].userMr.mrPrice * project[0].userMr.mrNum + project[0].userMr.pePrice * project[0].userMr.mrNum ) * project[0].userMr.loss + ( project[1].userMr.mrPrice * project[1].userMr.mrNum + project[1].userMr.pePrice * project[1].userMr.mrNum ) * project[1].userMr.loss + ( project[2].userMr.mrPrice * project[2].userMr.mrNum + project[2].userMr.pePrice * project[2].userMr.mrNum ) * project[2].userMr.loss }}</div>
+	<div class="totalmoney">总计：{{ (( project[0].userMr.mrPrice * project[0].userMr.mrNum + project[0].userMr.pePrice * project[0].userMr.mrNum ) * project[0].userMr.loss + ( project[1].userMr.mrPrice * project[1].userMr.mrNum + project[1].userMr.pePrice * project[1].userMr.mrNum ) * project[1].userMr.loss + ( project[2].userMr.mrPrice * project[2].userMr.mrNum + project[2].userMr.pePrice * project[2].userMr.mrNum ) * project[2].userMr.loss).toFixed(2) }}</div>
 
-	<a href="numbox.html">数字输入</a>
+	<!-- <a href="numbox.html">数字输入</a> -->
 </div>
 
 <script src="js/mui.js"></script>
@@ -346,8 +345,8 @@ var userlist = new Vue({
 			  		{
 			  			mrId: 5,
 			  			mrName: "立邦更美",
-					    mrNum: 150,
-					    mrPrice: 10,
+					    mrNum: 98,
+					    mrPrice: 15,
 					    loss: 1.05,
 					    pePrice: 12
 			  		}
